@@ -36,6 +36,10 @@ var mockShaTaggingAdapter = new CoreObject({
     return tag;
   },
 
+  getTagName: function() {
+    return UPLOAD_KEY;
+  },
+
   reset: function() {
     this.tagCount = 0;
   }
@@ -114,7 +118,7 @@ describe('RedisAdapter', function() {
               return redisClient.get(UPLOAD_KEY);
             })
             .then(function(result) {
-              return expect(result).to.eq(DOCUMENT_TO_SAVE);
+              return expect(result).to.eq(UPLOAD_KEY);
             });
         });
 
